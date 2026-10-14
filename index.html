@@ -1,1 +1,237 @@
 
+```html
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلام دنیا | کد ساده HTML</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(145deg, #f0f4ff 0%, #e6ecfe 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-radius: 2.5rem;
+            padding: 3rem 2.5rem;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 
+                0 25px 40px -12px rgba(0, 20, 80, 0.25),
+                inset 0 1px 2px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.005);
+        }
+
+        .emoji-badge {
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 8px 12px rgba(0, 70, 150, 0.2));
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #0b2b5c;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.75rem;
+            word-break: break-word;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #2a6df4 0%, #1e4fd0 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        p {
+            font-size: 1.25rem;
+            color: #1e3a6b;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.75rem 1rem;
+            border-radius: 60px;
+            display: inline-block;
+            backdrop-filter: blur(4px);
+        }
+
+        .date-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #ffffffcc;
+            border-radius: 100px;
+            padding: 0.8rem 1.8rem;
+            margin-bottom: 2rem;
+            border: 1px solid #b8cbf5;
+            box-shadow: 0 6px 14px rgba(42, 109, 244, 0.12);
+            color: #0d2e5e;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .date-box span:first-child {
+            font-size: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0b2b5c;
+            color: white;
+            border: none;
+            padding: 1rem 2.8rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 12px 18px -8px rgba(11, 43, 92, 0.4);
+            letter-spacing: 0.5px;
+            border: 1px solid #ffffff40;
+        }
+
+        .btn:hover {
+            background: #1a3f7a;
+            box-shadow: 0 18px 24px -8px rgba(11, 43, 92, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 8px 12px -6px rgba(11, 43, 92, 0.4);
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            font-size: 0.95rem;
+            color: #4d6085;
+            border-top: 1px dashed #b8c8e8;
+            padding-top: 1.5rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .footer-note code {
+            background: #dee8fc;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #0b2b5c;
+            direction: ltr;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- آیکون تزئینی -->
+        <div class="emoji-badge">✨🌐✨</div>
+
+        <!-- تیتر اصلی با افکت گرادیان -->
+        <h1>
+            <span class="highlight">سلام دنیا!</span>
+        </h1>
+
+        <!-- متن معرفی -->
+        <p>
+            این یک کد <strong>HTML ساده</strong> و واکنش‌گراست<br>
+            با استایل مدرن و راست‌چین
+        </p>
+
+        <!-- نمایش تاریخ شمسی (به صورت داینامیک با جاوااسکریپت) -->
+        <div class="date-box" id="dateDisplay">
+            <span>📅</span>
+            <span id="persianDate">در حال بارگذاری...</span>
+        </div>
+
+        <!-- دکمه تعاملی -->
+        <button class="btn" id="helloBtn">
+            🖐️ کلیک کن
+        </button>
+
+        <!-- پانوشت -->
+        <div class="footer-note">
+            ساخته شده با <code>&lt;html&gt;</code> ، <code>&lt;css&gt;</code> و <code>&lt;js&gt;</code> — کد ساده و کامل
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ---------- نمایش تاریخ شمسی به صورت داینامیک ----------
+            const persianDateSpan = document.getElementById('persianDate');
+            
+            // تابع برای تبدیل تاریخ میلادی به شمسی
+            function getPersianDate() {
+                try {
+                    const now = new Date();
+                    // استفاده از API بین‌المللی برای تقویم شمسی (fa-IR)
+                    const options = { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric',
+                        weekday: 'long'
+                    };
+                    // locale 'fa-IR' تقویم شمسی را پشتیبانی می‌کند
+                    return new Intl.DateTimeFormat('fa-IR', options).format(now);
+                } catch (e) {
+                    // در صورت عدم پشتیبانی، تاریخ میلادی ساده برمیگردانیم
+                    const d = new Date();
+                    return d.toLocaleDateString('fa-IR');
+                }
+            }
+
+            // به‌روزرسانی تاریخ
+            if (persianDateSpan) {
+                persianDateSpan.textContent = getPersianDate();
+            }
+
+            // ---------- دکمه تعاملی: پیام خوش‌آمدگویی ----------
+            const btn = document.getElementById('helloBtn');
+            btn.addEventListener('click', function() {
+                // تغییر متن دکمه به صورت موقت
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '🎉 خوش آمدید!';
+                btn.style.background = '#1a5e3a';  // تغییر رنگ موقت
+                
+                // نمایش یک پیام ساده
+                alert('سلام! از اینکه این کد ساده را اجرا کردید سپاسگزارم 🌟');
+                
+                // بازگرداندن دکمه به حالت اول پس از ۱.۵ ثانیه
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '#0b2b5c';
+                }, 1500);
+            });
+
+            // ---------- یک افکت کوچک: تغییر جزئی در ظاهر هنگام لود ----------
+            console.log('کد HTML ساده با موفقیت اجرا شد ✅');
+        })();
+    </script>
+</body>
+</html>
+```
